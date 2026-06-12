@@ -1,53 +1,80 @@
-import { Link } from "react-router-dom";
-import { FaGithub, FaLinkedin , FaBars, FaTimes} from "react-icons/fa";
+import { Link, NavLink } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Skills", path: "/skills" },
+    { name: "Projects", path: "/projects" },
+    { name: "Contact", path: "/contact" },
+  ];
+
   return (
-    <nav className="fixed top-0 left-0 w-full bg-slate-950/80 backdrop-blur-md border-b border-slate-800 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav className="fixed top-0 left-0 w-full bg-slate-950/95 backdrop-blur-md border-b border-slate-800 z-50">
+      <div className="w-full px-8 lg:px-12 h-16 flex items-center justify-between">
 
         {/* Logo */}
-        <Link
-          to="/"
-          className="text-2xl font-bold text-blue-400"
-        >
-          RG.dev
-        </Link>
+        {/* Logo */}
+<Link
+  to="/"
+  className="flex items-center"
+>
+  <span className="text-3xl md:text-4xl font-extrabold text-blue-500">
+    RG
+  </span>
+</Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex gap-6 text-slate-300">
-          <Link to="/" className="hover:text-blue-400">Home</Link>
-          <Link to="/about" className="hover:text-blue-400">About</Link>
-          <Link to="/projects" className="hover:text-blue-400">Projects</Link>
-          <Link to="/skills" className="hover:text-blue-400">Skills</Link>
-          <Link to="/contact" className="hover:text-blue-400">Contact</Link>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-10">
+          {navLinks.map((link) => (
+            <NavLink
+              key={link.name}
+              to={link.path}
+              end={link.path === "/"}
+              className={({ isActive }) =>
+                `
+                relative
+                py-5
+                text-sm
+                font-medium
+                transition-colors
+                ${
+                  isActive
+                    ? "text-blue-500"
+                    : "text-slate-300 hover:text-white"
+                }
+              `
+              }
+            >
+              {({ isActive }) => (
+                <>
+                  {link.name}
+
+                  {isActive && (
+                    <span
+                      className="
+                        absolute
+                        bottom-0
+                        left-0
+                        w-full
+                        h-[2px]
+                        bg-blue-500
+                      "
+                    />
+                  )}
+                </>
+              )}
+            </NavLink>
+          ))}
         </div>
 
-        {/* Desktop Social Icons */}
-        <div className="hidden md:flex gap-4">
-          <a
-            href="https://github.com/grcrrsl"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaGithub className="cursor-pointer hover:text-blue-400" />
-          </a>
-
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaLinkedin className="cursor-pointer hover:text-blue-400" />
-          </a>
-        </div>
-
-        {/* Mobile Hamburger */}
+        {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-2xl"
+          className="md:hidden text-white text-2xl"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <FaTimes /> : <FaBars />}
@@ -56,66 +83,29 @@ function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-slate-900 border-t border-slate-800">
-          <div className="flex flex-col p-6 gap-4 text-slate-300">
+        <div className="md:hidden bg-slate-950 border-t border-slate-800">
+          <div className="flex flex-col py-4">
 
-            <Link
-              to="/"
-              onClick={() => setIsOpen(false)}
-              className="hover:text-blue-400"
-            >
-              Home
-            </Link>
-
-            <Link
-              to="/about"
-              onClick={() => setIsOpen(false)}
-              className="hover:text-blue-400"
-            >
-              About
-            </Link>
-
-            <Link
-              to="/projects"
-              onClick={() => setIsOpen(false)}
-              className="hover:text-blue-400"
-            >
-              Projects
-            </Link>
-
-            <Link
-              to="/skills"
-              onClick={() => setIsOpen(false)}
-              className="hover:text-blue-400"
-            >
-              Skills
-            </Link>
-
-            <Link
-              to="/contact"
-              onClick={() => setIsOpen(false)}
-              className="hover:text-blue-400"
-            >
-              Contact
-            </Link>
-
-            <div className="flex gap-4 pt-4 border-t border-slate-800">
-              <a
-                href="https://github.com/grcrrsl"
-                target="_blank"
-                rel="noreferrer"
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.name}
+                to={link.path}
+                end={link.path === "/"}
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  `
+                  px-6 py-3
+                  ${
+                    isActive
+                      ? "text-blue-500"
+                      : "text-slate-300"
+                  }
+                `
+                }
               >
-                <FaGithub className="text-xl hover:text-blue-400" />
-              </a>
-
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FaLinkedin className="text-xl hover:text-blue-400" />
-              </a>
-            </div>
+                {link.name}
+              </NavLink>
+            ))}
 
           </div>
         </div>

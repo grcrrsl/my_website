@@ -7,7 +7,7 @@ function Home() {
     <>
       <Navbar />
 
-      <section className="min-h-screen flex items-center justify-center px-6">
+      <section className="min-h-[85vh] flex items-center justify-center px-6">
         <div className="text-center max-w-4xl">
           <p className="text-blue-400 uppercase tracking-widest mb-4">
             Welcome To My Portfolio
@@ -22,8 +22,6 @@ function Home() {
               "Aspiring Full-Stack Developer",
               2000,
               "Information Technology Student",
-              2000,
-              "Java Developer",
               2000,
             ]}
             speed={50}

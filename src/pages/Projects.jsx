@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Navbar from "../components/layout/Navbar";
 import projects from "../data/projects";
-import { FaGithub, FaExternalLinkAlt , FaPlayCircle } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaPlayCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function Projects() {
@@ -125,13 +125,13 @@ function Projects() {
                     <span
                       key={tech}
                       className="
-        bg-slate-800
-        text-blue-400
-        px-3
-        py-1
-        rounded-full
-        text-sm
-      "
+                        bg-slate-800
+                        text-blue-400
+                        px-3
+                        py-1
+                        rounded-full
+                        text-sm
+                      "
                     >
                       {tech}
                     </span>
@@ -140,13 +140,13 @@ function Projects() {
                   {project.technologies.length > 3 && (
                     <span
                       className="
-        bg-slate-700
-        text-slate-300
-        px-3
-        py-1
-        rounded-full
-        text-sm
-      "
+                        bg-slate-700
+                        text-slate-300
+                        px-3
+                        py-1
+                        rounded-full
+                        text-sm
+                      "
                     >
                       +{project.technologies.length - 3}
                     </span>
@@ -179,23 +179,21 @@ function Projects() {
                     <FaPlayCircle />
                     Demo Video
                   </a>
-                  
-                   {project.website && (
-    <a
-      href={project.website}
-      target="_blank"
-      rel="noreferrer"
-      className="
-        flex items-center gap-2
-        hoveer:text-blue-400
-      "
-    >
-      <FaExternalLinkAlt />
-      Live Website
-    </a>
-  )}
 
-
+                  {project.website && (
+                    <a
+                      href={project.website}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="
+                    flex items-center gap-2
+                    hoveer:text-blue-400
+                    "
+                    >
+                      <FaExternalLinkAlt />
+                      Live Website
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}

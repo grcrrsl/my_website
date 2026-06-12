@@ -11,7 +11,7 @@ function Footer() {
           {/* Brand */}
           <div>
             <h2 className="text-3xl font-bold text-blue-400">
-              RG.dev
+              RG
             </h2>
 
             <p className="mt-4 text-slate-400 leading-relaxed">

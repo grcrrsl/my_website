@@ -1,4 +1,7 @@
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 import {
   FaEnvelope,
   FaGithub,
@@ -8,6 +11,36 @@ import {
 } from "react-icons/fa";
 
 function Contact() {
+  const form = useRef();
+
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+    setSuccess("");
+
+    emailjs
+      .sendForm(
+        "service_nuv9i7a",
+        "template_7qvparn",
+        form.current,
+        "sRAjjO_xW6LGvutqd"
+      )
+      .then(() => {
+        setSuccess("Thank you for reaching out! I'll get back to you as soon as possible.");
+        form.current.reset();
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setSuccess("Failed to send message. Please try again.");
+        setLoading(false);
+      });
+  };
+
   return (
     <>
       <Navbar />
@@ -29,7 +62,9 @@ function Contact() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* Contact Information */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8">
-              <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
+              <h2 className="text-2xl font-bold mb-6">
+                Contact Information
+              </h2>
 
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
@@ -80,7 +115,7 @@ function Contact() {
                       rel="noreferrer"
                       className="hover:text-blue-400"
                     >
-                      facebook.com/roselle garcera
+                      facebook.com/grcrrsl
                     </a>
                   </div>
                 </div>
@@ -97,12 +132,20 @@ function Contact() {
 
             {/* Contact Form */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8">
-              <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
+              <h2 className="text-2xl font-bold mb-6">
+                Send a Message
+              </h2>
 
-              <form className="space-y-4">
+              <form
+                ref={form}
+                onSubmit={sendEmail}
+                className="space-y-4"
+              >
                 <input
                   type="text"
+                  name="name"
                   placeholder="Your Name"
+                  required
                   className="
                     w-full
                     bg-slate-800
@@ -118,7 +161,9 @@ function Contact() {
 
                 <input
                   type="email"
+                  name="email"
                   placeholder="Your Email"
+                  required
                   className="
                     w-full
                     bg-slate-800
@@ -134,7 +179,9 @@ function Contact() {
 
                 <textarea
                   rows="5"
+                  name="message"
                   placeholder="Your Message"
+                  required
                   className="
                     w-full
                     bg-slate-800
@@ -150,6 +197,7 @@ function Contact() {
 
                 <button
                   type="submit"
+                  disabled={loading}
                   className="
                     w-full
                     bg-blue-600
@@ -157,15 +205,30 @@ function Contact() {
                     py-3
                     rounded-lg
                     transition-all
+                    disabled:opacity-50
                   "
                 >
-                  Send Message
+                  {loading ? "Sending..." : "Send Message"}
                 </button>
+
+                {success && (
+                  <p
+                    className={`text-center mt-4 ${
+                      success.includes("successfully")
+                        ? "text-green-400"
+                        : "text-red-400"
+                    }`}
+                  >
+                    {success}
+                  </p>
+                )}
               </form>
             </div>
           </div>
         </div>
       </section>
+
+      <Footer />
     </>
   );
 }
