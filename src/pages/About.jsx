@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import profileImage from "../assets/images/RoselleGarceraPicture.jpg";
 import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
+
 
 function About() {
   return (
@@ -94,6 +96,7 @@ function About() {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 }

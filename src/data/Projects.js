@@ -1,8 +1,23 @@
+import deckImage from "../assets/images/deck_of_clothes.png";
+import pharmacyImage from "../assets/images/Hospital_Pharmacy_System.png";
+import effataImage from "../assets/images/EffataPOS.png";
+
+
 const projects = [
   {
     id: 1,
     title: "Deck of Clothes Inventory System",
     category: "Desktop Application",
+
+    image: deckImage,
+
+    developers: ["Roselle Garcera"],
+
+    year: 2025,
+
+    status: "Completed",
+
+    role: "Full-Stack Developer",
 
     description:
     "A desktop application for managing clothing inventory, sales, and customer purchases.",
@@ -51,6 +66,16 @@ const projects = [
     title: "Hospital Pharmacy Inventory System",
     category: "Desktop Application",
 
+    developers: ["Roselle Garcera"],
+
+    image: pharmacyImage,
+
+    year: 2025,
+
+    status: "Completed",
+
+    role: "Full-Stack Developer",
+
     description:
         "A desktop application for managing medicine inventory, stock levels, and expiration dates.",
     
@@ -95,13 +120,23 @@ const projects = [
     title: "Effata Point of Sale System (POS)",
     category: "Desktop Application",
 
+    developers: ["Roselle Garcera"],
+
+    image: effataImage,
+
+    year: 2026,
+
+    status: "Completed",
+
+    role: "Full-Stack Developer",
+
     description:
         "A desktop POS system for managing sales, inventory, and business operations efficiently.",
 
     fullDescription:
       "Effata POS System is a Java-based Point of Sale application designed to streamline sales transactions, inventory management, and business operations. The system enables staff to process orders efficiently while providing administrators with tools for product management, inventory tracking, employee management, reporting, and audit monitoring through a modern desktop interface.",
 
-    technologies: ["Java", "Java Swing", "MySQL", "JDBC (Java Database Connectivity)", "Object-Oriented Programming (OOP)", "DAO (Data Access Object) Pattern", "VS Code IDE"],
+    technologies: ["Java", "Java Swing", "SSMS", "JDBC (Java Database Connectivity)", "Object-Oriented Programming (OOP)", "DAO (Data Access Object) Pattern", "VS Code IDE"],
 
     features: [
       "Point of Sale (POS) Transactions",
@@ -141,8 +176,66 @@ const projects = [
 
   {
     id: 4,
+    title: "Mind Bloom Website",
+    category: "Web Application",
+
+    developers: ["Roselle Garcera"],
+
+    year: 2026,
+
+    status: "Completed",
+
+    role: "Full-Stack Developer",
+
+    description:
+      "A platform for college students and young adult mental health awareness and support.",
+
+    fullDescription:
+        "Mind Bloom — A platform promoting student mental health and well-being. The website provides resources, support, and a community for students to thrive academically and emotionally.",
+
+    technologies: ["Html", " CSS", "JavaScript"],
+
+    features: [
+      "Mental Health Awareness",
+      "Self-Care Resources",
+      "Educational Content",
+      "User-Friendly Interface",
+    ],
+
+    challenges: [
+      "Designing a clean and engaging interface for mental health content.",
+      "Organizing educational resources in a way that is easy for users to navigate.",
+      "Creating a responsive design that works across different devices and screen sizes.",
+      "Ensuring accessibility and readability for diverse users.",
+      "Balancing visual appeal with usability and performance.",
+      "Structuring reusable React components to maintain a scalable codebase."
+    ],
+
+    lessons: [
+      "Improved React development skillsImproved frontend development skills using React.js and modern web technologies.",
+      "Learned how to create responsive and accessible user interfaces.",
+      "Gained experience organizing content for better user engagement.",
+      "Enhanced component-based development and code reusability.",
+      "Strengthened problem-solving and debugging skills during development.",
+      "Learned the importance of designing technology that addresses real-world social issues."
+    ],
+
+    github: "https://github.com/grcrrsl/mindbloom_website.git",
+    demo: "https://drive.google.com/file/d/1a_WcvLVHugwf4aGHSV6aFwQEihYqOlLG/view?usp=drive_link",
+    website: "https://mindbloom-website-r7qng50dj-grcrrsls-projects.vercel.app/",
+  },
+{
+    id: 5,
     title: "Portfolio Website",
     category: "Web Application",
+
+    year: 2026,
+
+    status: "In Progress",
+
+    developers: ["Roselle Garcera"],
+
+    role: "Full-Stack Developer",
 
     description:
       "A personal portfolio website built with React and Tailwind CSS to showcase projects and skills.",
