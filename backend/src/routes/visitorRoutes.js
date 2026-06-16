@@ -1,0 +1,12 @@
+import express from "express";
+import {
+  incrementVisitor,
+  getVisitorCount,
+} from "../controllers/visitorController.js";
+
+const router = express.Router();
+
+router.post("/visit", incrementVisitor);
+router.get("/count", getVisitorCount);
+
+export default router;
